@@ -32,6 +32,7 @@ public class PriceRequestBean {
         poussettes = poussetteService.recupererPoussettes();
         options = optionService.recupererOptions();
         demandeDePrix = new DemandeDePrix();
+
     }
 
     public String SendRequest() {

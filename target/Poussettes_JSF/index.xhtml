@@ -19,7 +19,7 @@
 			<p:selectOneMenu>
 				<f:selectItem itemLabel="Choisissez une poussette" itemValue=""/>
 				<f:selectItems value="${priceRequestBean.poussettes}" var="poussette" itemLabel="${poussette.nom}"
-							   itemValue="${poussette.id}" />
+							   itemValue="${priceRequestBean.demandeDePrix.poussetteSelectionnee}" />
 			</p:selectOneMenu>
 			<br/>
 			<h:outputLabel for="dateBegin" value="Date de début :"/>
@@ -36,7 +36,7 @@
 			</p:selectManyCheckbox>
 			<br/>
 			<p:outputLabel value="Informations complémentaires :"/><br/>
-			<p:inputTextarea/>
+			<p:inputTextarea value="#{priceRequestBean.demandeDePrix.informationComplementaire}"/>
 			<br/>
 			<p:commandButton value="Envoyer" action="#{priceRequestBean.SendRequest}" ajax="false"/>
 
