@@ -18,9 +18,12 @@ public class DemandeDePrix {
 	private String informationComplementaire;
 
 	private static Long compteurId  = new Long(0);
-	
+
+	public DemandeDePrix() {
+	}
+
 	public DemandeDePrix(String email, Poussette poussetteSelectionnee, Date dateDebut, Date dateFin,
-			String informationComplementaire) {
+						 String informationComplementaire) {
 		id = ++compteurId;
 		dateDemande = new Date();
 		this.email = email;
