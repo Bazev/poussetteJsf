@@ -13,6 +13,7 @@ import fr.humanbooster.fx.poussettes.service.impl.PoussetteServiceImpl;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean(name = "priceRequestBean")
@@ -23,25 +24,28 @@ public class PriceRequestBean {
     private OptionService optionService = new OptionServiceImpl();
     private List<Poussette> poussettes = null;
     private List<Option> options = null;
-    private DemandeDePrix demandeDePrix = null;
-    private String poussettteSelect;
-
-
+    public static  DemandeDePrix demandeDePrix = null;
+    private String poussetteSelect;
 
     public PriceRequestBean() {
         poussettes = poussetteService.recupererPoussettes();
         options = optionService.recupererOptions();
         demandeDePrix = new DemandeDePrix();
+        demandeDePrix.setDateDemande(new Date());
+        poussetteService.recupererPoussette(poussetteSelect);
+
 
     }
 
     public String SendRequest() {
-        demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(demandeDePrix.getEmail(), poussettteSelect, demandeDePrix.getDateDebut(), demandeDePrix.getDateFin(), demandeDePrix.getInformationComplementaire());
+        demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(demandeDePrix.getEmail(), poussetteSelect, demandeDePrix.getDateDebut(), demandeDePrix.getDateFin(), demandeDePrix.getInformationComplementaire());
+        demandeDePrix.setOptions(options);
+        System.out.println(demandeDePrix);
         return "confirmation";
     }
 
     public List<Poussette> getPoussettes() {
-      return poussettes;
+        return poussettes;
     }
 
     public DemandeDePrix getDemandeDePrix() {
@@ -58,6 +62,19 @@ public class PriceRequestBean {
 
     public void setDemandeDePrix(DemandeDePrix demandeDePrix) {
         this.demandeDePrix = demandeDePrix;
+    }
+
+
+    public void setPoussettes(List<Poussette> poussettes) {
+        this.poussettes = poussettes;
+    }
+
+    public String getPoussetteSelect() {
+        return poussetteSelect;
+    }
+
+    public void setPoussetteSelect(String poussetteSelect) {
+        this.poussetteSelect = poussetteSelect;
     }
 }
 
