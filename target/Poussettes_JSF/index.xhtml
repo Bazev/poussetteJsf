@@ -30,9 +30,17 @@
 			<p:inputText type="date" id="dateEnd" value="#{priceRequestBean.demandeDePrix.dateFin}"/>
 			<br/>
 
-			<p:selectManyCheckbox id="basic" value="#{priceRequestBean.options}">
-				<f:selectItem var="option" value="#{option}" itemLabel="#{option.nom}" itemValue="#{option.id}"/>
+			<p:selectManyCheckbox value="#{priceRequestBean.options}">
+				<p:outputLabel  value="Options :"/>
+				<f:selectItems value="#{priceRequestBean.options}" var="option" itemLabel="#{option.nom}" itemValue="#{option.id}"/>
 			</p:selectManyCheckbox>
+			<br/>
+			<p:outputLabel value="Informations complémentaires :"/><br/>
+			<p:inputTextarea/>
+			<br/>
+			<p:commandButton value="Envoyer" action="#{priceRequestBean.SendRequest}" ajax="false"/>
+
+
 
 		</h:form>
 	</h:body>
