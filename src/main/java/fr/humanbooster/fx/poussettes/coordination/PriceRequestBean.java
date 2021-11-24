@@ -25,7 +25,7 @@ public class PriceRequestBean {
     private List<Poussette> poussettes = null;
     private List<Option> options = null;
     private List<Option> optionsSelect = null;
-    public static DemandeDePrix demandeDePrix = null;
+    private DemandeDePrix demandeDePrix = null;
     private String poussetteSelect;
 
     public PriceRequestBean() {
