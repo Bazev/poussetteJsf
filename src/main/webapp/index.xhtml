@@ -16,10 +16,10 @@
     <h:body>
         <h2>Demande de prix</h2>
         <h:form>
-            <p:selectOneMenu>
-                <f:selectItem itemLabel="Choisissez une poussette" itemValue=""/>
+            <p:selectOneMenu value="#{priceRequestBean.poussetteSelect}">
+                <f:selectItem itemLabel="Choisissez une poussette" />
                 <f:selectItems value="${priceRequestBean.poussettes}" var="poussette" itemLabel="${poussette.nom}"
-                               itemValue="${priceRequestBean.demandeDePrix.poussetteSelectionnee}"/>
+                               itemValue="${poussette.nom}"/>
             </p:selectOneMenu>
             <br/>
             <h:outputLabel for="dateBegin" value="Date de début :"/>
@@ -30,10 +30,10 @@
             <p:calendar id="dateEnd" value="#{priceRequestBean.demandeDePrix.dateFin}" pattern="dd.MM.yyyy"/>
             <br/>
 
-            <p:selectManyCheckbox value="#{priceRequestBean.options}">
+            <p:selectManyCheckbox value="#{priceRequestBean.optionsSelect}">
                 <p:outputLabel value="Options :"/>
                 <f:selectItems value="#{priceRequestBean.options}" var="option" itemLabel="#{option.nom}"
-                               itemValue="#{priceRequestBean.demandeDePrix.options}"/>
+                               itemValue="#{option.nom}"/>
             </p:selectManyCheckbox>
             <br/>
 

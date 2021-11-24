@@ -24,7 +24,8 @@ public class PriceRequestBean {
     private OptionService optionService = new OptionServiceImpl();
     private List<Poussette> poussettes = null;
     private List<Option> options = null;
-    public static  DemandeDePrix demandeDePrix = null;
+    private List<Option> optionsSelect = null;
+    public static DemandeDePrix demandeDePrix = null;
     private String poussetteSelect;
 
     public PriceRequestBean() {
@@ -32,14 +33,11 @@ public class PriceRequestBean {
         options = optionService.recupererOptions();
         demandeDePrix = new DemandeDePrix();
         demandeDePrix.setDateDemande(new Date());
-        poussetteService.recupererPoussette(poussetteSelect);
-
-
     }
 
     public String SendRequest() {
-        demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(demandeDePrix.getEmail(), poussetteSelect, demandeDePrix.getDateDebut(), demandeDePrix.getDateFin(), demandeDePrix.getInformationComplementaire());
-        demandeDePrix.setOptions(options);
+        demandeDePrix = demandeDePrixService.ajouterDemandeDePrix(demandeDePrix.getEmail() , poussetteSelect, demandeDePrix.getDateDebut(), demandeDePrix.getDateFin(), demandeDePrix.getInformationComplementaire());
+        demandeDePrix.setOptions(optionsSelect);
         System.out.println(demandeDePrix);
         return "confirmation";
     }
@@ -76,5 +74,14 @@ public class PriceRequestBean {
     public void setPoussetteSelect(String poussetteSelect) {
         this.poussetteSelect = poussetteSelect;
     }
+
+    public List<Option> getOptionsSelect() {
+        return optionsSelect;
+    }
+
+    public void setOptionsSelect(List<Option> optionsSelect) {
+        this.optionsSelect = optionsSelect;
+    }
+
 }
 
